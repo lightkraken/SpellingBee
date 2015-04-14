@@ -1,0 +1,346 @@
+body {
+	margin: 0px;
+}
+
+#viewport {
+	background-color: rgb(99,99,99);
+	position: relative;
+	font-family: Arial;
+	font-size: 18px;
+	color: white;
+}
+
+.ui-button .ui-button-text {
+	font-size: 18px;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+	font-size: 18px;
+}
+
+.red  {
+	color: red;
+}
+
+.blue {
+	color: blue;
+}
+
+.green {
+	color: green;
+}
+
+.big  {
+	font-size: 24px;
+	margin: 0.5em 0 0.5em 0;
+}
+
+.biggest {
+	font-size: 36px;
+	margin: 1.5em 0 0.5em 0;
+	text-transform: uppercase;
+}
+
+.indent {
+	margin-left: 20px;
+}
+
+.indent2 {
+	margin-left: 40px;
+}
+
+.indent3 {
+	margin-left: 60px;
+}
+
+.scroll_y {
+	overflow-y: auto;
+}
+
+.column_center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.row_center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.space-around {
+	display: flex;
+	justify-content: space-around;
+}
+
+.bg_canvas {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.rounded {
+	border-radius: 5px;
+}
+
+.marginned {
+	margin: 10px;
+}
+
+.padded {
+	padding: 10px;
+}
+
+.floating_bg {
+	z-index: 1;
+	background: rgba(255,255,255,0.25);
+}
+
+.menu_bg {
+    background-color: rgb(63,63,63);
+    width: 800px;
+    height: 600px;
+}
+
+.plain_bg{
+    background-color: rgb(63,63,63);
+    width: 800px;
+    height: 600px;
+}
+
+/*Main Menu*/
+#menu_buttons {
+	position: relative;
+	top: 303px;
+}
+
+#menu_buttons button {
+	margin: 6px;
+	width: 180px;
+}
+
+/* Options Menu */
+#options_container {
+	z-index: 1;
+}
+
+#vergence {
+	border: 1px solid rgba(255,255,255, 0.25);
+	padding: 6px 6px 0px 6px;
+}
+
+.options_border {
+	border: 1px solid rgba(255,255,255, 0.25);
+	padding: 6px;
+}
+
+.options_radio div {
+	display: inline-block;
+}
+
+#palette_radio label span, #bounce_radio label span {
+	padding: 0.4em 0.6em 0.2em 0.6em;
+}
+
+.rb_button {
+	height: 41px;
+	width: 41px;
+	background-image: linear-gradient(
+						to top right,
+						rgb(255,0,0),
+						rgb(0, 0, 0),
+						rgb(0,0,255)
+	);
+}
+
+.pt_button {
+	height: 41px;
+	width: 41px;
+	background-image: linear-gradient(
+						to top right,
+						rgb(127,0,127),
+						rgb(127, 127, 127),
+						rgb(0,127,127)
+	);
+}
+
+.rg_button {
+	height: 41px;
+	width: 41px;
+	background-image: linear-gradient(
+						to top right,
+						rgb(255,0,0),
+						rgb(255, 127, 0),
+						rgb(0,127,0)
+	);
+}
+
+.options_spinner {
+	padding-left: 15px;
+}
+
+.big_spin {
+	width: 80px;
+}
+
+.small_spin {
+	width: 50px;
+}
+
+.options_width {
+	width: 550px;
+}
+
+#options_buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#options_buttons button {
+	margin-left: 6px;
+	margin-top: 6px;
+}
+
+/* Calibrate menu */
+#calibrate_buttons {
+	position: relative;
+	top: 353px;
+}
+
+#calibrate_buttons button {
+	margin: 6px;
+}
+
+#cal_dialog_square {
+	background: rgb(99,99,99);
+	color: white;
+	font-family: Arial,sans-serif;
+	font-size: 18px;
+	padding: 10px;
+}
+
+#cal_dialog canvas {
+	margin-bottom: 9px;
+}
+
+#calib_slider {
+	width: 700px;
+	margin-top: 5px;
+}
+
+#cal_dialog_square > div:nth-child(1) {
+	margin-bottom: 12px;
+}
+
+#cal_dialog_square > div:nth-child(2){
+	margin-bottom: 20px;
+}
+
+/* Instructions menu */
+#inner_instructions {
+	padding: 0 1em 1em 1em;
+	line-height: 1.5;
+}
+
+#inner_instructions button{
+	margin: 0 auto 0 auto;
+	display: block;
+}
+
+#ptblock {
+	height: 20px;
+	width: 30px;
+	background-image: linear-gradient(
+						to top right,
+						rgb(127,0,127),
+						rgb(127, 127, 127),
+						rgb(0,127,127)
+	);
+	display: inline-block;
+}
+
+#rbblock {
+	height: 20px;
+	width: 30px;
+	background-image: linear-gradient(
+						to top right,
+						rgb(255,0,0),
+						rgb(0, 0, 0),
+						rgb(0,0,255)
+	);
+	display: inline-block;
+}
+
+/* Level */
+#countdown {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	font-size: 32px;
+	padding: 18px;
+	color: rgba(255,255,255,0.5)
+}
+
+#sound {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	padding: 18px;
+	opacity: 0.5;
+
+}
+
+#sound img {
+	cursor: pointer;
+}
+
+#pause_buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#pause_buttons button {
+	margin-top: 6px;
+	margin-left: 6px;
+}
+
+#infomiss {
+	margin-bottom: 18px;
+}
+
+#infobouncediv {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pause_padding {
+	padding: 6px;
+}
+
+.hexagon {
+  fill: none;
+  stroke: gray;
+  stroke-width: .5px;
+}
+
+.pause_tab {
+	background: white;
+}
+
+.pause_imp {
+	font-size: 36px;
+}

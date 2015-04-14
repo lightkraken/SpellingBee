@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+	<head>
+		<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="manifest.json">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#29a39b">
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="msapplication-TileImage" content="mstile-144x144.png">
+
+		<link rel="stylesheet" href="css/Aristo.css">
+		<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+		<link rel="stylesheet" href="css/spellingbee.css">
+
+		<script src="javascript/third_party/jquery-2.1.3.min.js"></script>
+		<script src="javascript/third_party/jquery-ui.min.js"></script>
+		<script src="javascript/third_party/jquery-ui-slider-pips.min.js"></script>
+		<script src="javascript/third_party/howler.min.js"></script>
+		<script src="javascript/third_party/d3.min.js"></script>
+		<script src="javascript/third_party/hexbin.js"></script>
+
+		<script src="javascript/scene.js"></script>
+		<script src="javascript/storage.js"></script>
+		<script src="javascript/utilities.js"></script>
+		<script src="javascript/assets.js"></script>
+		<script src="javascript/game.js"></script>
+
+		<title>Spelling Bee</title>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-54385001-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>		
+	</head>
+	<body>
+		<div id="viewport" class="column_center">
+			<div id="loading" class="column_center hidden">
+				<div class="plain_bg column_center">
+					<p>Loading...</p>
+				</div>
+			</div>
+			<div id="main_menu" class="column_center hidden">
+				<div class="menu_bg">
+					<div id="menu_buttons" class="column_center">
+						<button id="start_button" type="button">Start</button>
+						<button id="options_button" type="button">Options</button>
+						<button id="calibrate_button" type="button">Calibrate Colors</button>
+						<button id="instructions_button" type="button">Instructions</button>
+					</div>
+				</div>
+			</div>
+			<div id="options_menu" class="column_center hidden">
+				<canvas id="options_canvas" class="bg_canvas"></canvas>
+				<div id="options_container">
+					<div id="options_box" class="column_center rounded padded floating_bg">
+						<div id="vergence" class="rounded marginned">
+							<div class="options_width space-between"> <span>Divergence</span> <span>Convergence</span> </div>
+							<div id="vergence_slider" class="options_width"></div>
+						</div>
+						<div class="space-between options_width marginned">
+							<span class="options_border rounded">
+								<label for="size_spinner">Size:</label>
+								<input readonly id="size_spinner" name="value" class="options_spinner small_spin">
+							</span>
+							<span class="options_border rounded">
+								<label for="speed_spinner">Speed:</label>
+								<input readonly id="speed_spinner" name="value" class="options_spinner small_spin">
+							</span>
+							<span class="options_border rounded">
+								<label for="time_spinner">Time:</label>
+								<input readonly id="time_spinner" name="value" class="options_spinner big_spin">
+							</span>
+						</div>
+						<div class="space-between options_width marginned">
+							<div class="column_center">
+								<div id="palette_radio" class="row_center options_radio">
+									<div>Palette:&nbsp </div>
+									<input type="radio" id="pal_rad_1" name="pal_rad"><label for="pal_rad_1"> <div class="rb_button"></div> </label>
+									<input type="radio" id="pal_rad_2" name="pal_rad"><label for="pal_rad_2"> <div class="pt_button"></div> </label>
+									<input type="radio" id="pal_rad_3" name="pal_rad"><label for="pal_rad_3"> <div class="rg_button"></div> </label>
+								</div>
+							</div>
+							<div id="bounce_radio" class="row_center options_radio">
+								<div>Bounce:&nbsp </div>
+								<input type="radio" id="bounce_rad_1" name="bounce_rad"><label for="bounce_rad_1" id="b1"></label>
+								<input type="radio" id="bounce_rad_2" name="bounce_rad"><label for="bounce_rad_2" id="b2"></label>
+								<input type="radio" id="bounce_rad_3" name="bounce_rad"><label for="bounce_rad_3" id="b3"></label>
+							</div>
+						</div>
+					</div>
+					<div id="options_buttons">
+						<button id="options_save" type="button">Save</button>
+						<button id="options_cancel" type="button">Cancel</button>
+					</div>
+				</div>
+			</div>
+			<div id="calibrate_menu" class="hidden">
+				<div class="menu_bg">
+					<div id="calibrate_buttons" class="column_center">
+						<div class="row_center">
+							<button id="cal_rb_button" type="button"><div class="rb_button"></div></button>
+							<button id="cal_pt_button" type="button"><div class="pt_button"></div></button>
+							<button id="cal_rg_button" type="button"><div class="rg_button"></div></button>
+						</div>
+						<div>
+							<button id="cal_back_button" type="button">Back</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div id="cal_dialog" class="column_center hidden">
+				<div class="plain_bg column_center">
+					<div id="cal_dialog_square" class="column_center">
+						<div class="column_center">
+							<div>Look through the <span id="calib_span"></span> lens.</div>
+							<div>Adjust the slider until the hexagon disappears.</div>
+						</div>
+						<div class="column_center">
+							<canvas id="cal_canvas" width=700 height=400></canvas>
+							<div id="calib_slider"></div>
+						</div>
+						<button id="cal_button" type="button"></button>
+					</div>
+				</div>
+			</div>
+			<div id="level" class="hidden column_center">
+				<canvas id="canvas" class="bg_canvas"></canvas>
+				<div id="sound"></div>
+				<div id="countdown"></div>
+				<div id="pause" class="hidden floating_bg rounded pause_padding">
+					<div id="pause_tabs">
+						<ul>
+							<li><a href="#tabs-1">Info</a></li>
+							<li><a href="#tabs-2">Hits</a></li>
+							<li><a href="#tabs-3">Misses</a></li>
+						</ul>
+						<div id="tabs-1">
+							<div id="info_tab" class="pause_tab column_center">
+								<div>
+									<div class="space-between pause_imp"><b>Hits</b><span id="infohits"></span></div>
+									<div class="space-between pause_imp"><span><b>Misses</b></span><span id="infomiss" ></span></div>
+									<div class="space-between"><span><b>Time</b></span><span id="infotime"></span></div>
+									<div class="space-between"><span><b>Size</b></span><span id="infosize"></span></div>
+									<div class="space-between"><span><b>Speed</b></span><span id="infospeed"></span></div>
+									<div class="space-between"><b><span id="infovergence"></span></b><span id="infovergence2"></span></div>
+									<div id="infobouncediv"><span><b>Bounce</b></span><span id="infobounce"></span></div>
+								</div>
+							</div>
+						</div>
+						<div id="tabs-2">
+							<div id="hits_graph" class="pause_tab">
+							</div>
+						</div>
+						<div id="tabs-3">
+							<div id="misses_graph" class="pause_tab">
+							</div>
+						</div>
+					</div>
+					<div id="pause_buttons">
+						<button type="button" id="resume_button">Resume</button>
+						<button type="button" id="quit_button">Quit</button>
+					</div>
+				</div>
+			</div>
+			<div id="instructions" class="hidden column_center">
+				<div id="inner_instructions" class="plain_bg scroll_y">
+					<p>This application should only be used under the direction and supervision of a vision therapy professional.</p>
+					<p class="biggest">How to Play</p>
+					<ul>
+						<li>Press UP if the word is spelled correctly.</li>
+						<li>Press DOWN if the word is spelled incorrectly or has mixed up letters.</li>
+						<li>Press ESC to pause.</li>
+					</ul>
+					<p class="indent">Optional:</p>
+					<ul class="indent">
+						<li>Press LEFT and RIGHT to move the line underneath the word. This can help give you visual feedback when you need it.</li>
+					</ul>
+					<p class="biggest">Glasses and Colors</p>
+					<p class="indent big">Glasses:</p>
+					<p class="indent2">This game can be played using <span class="red">RED</span>/<span class="green">GREEN</span> or <span class="red">RED</span>/<span class="blue">BLUE</span> vision therapy glasses. <span class="red">RED</span>/<span class="green">GREEN</span> glasses work well, but <span class="red">RED</span>/<span class="blue">BLUE</span> glasses sometimes work better for dark computer monitors.</p>
+					<p class="indent2">The <span class="red">RED</span> lens should be over the RIGHT eye. The <span class="green">GREEN</span> or <span class="blue">BLUE</span> lens should be over the LEFT eye.</p>
+					<p class="indent big">Color Calibration:</p>
+					<p class="indent2">Before you play for the first time, calibrate the colors. Everyone has a slightly different pair of vision therapy glasses and a slightly different computer monitor. Calibrating the colors will customize the colors of the game to your glasses and monitor.</p>
+					<p class="indent big">Colors:</p>
+					<p class="indent2">There are three color palette options. They are all compatible with <span class="red">RED</span>/<span class="green">GREEN</span> and <span class="red">RED</span>/<span class="blue">BLUE</span> glasses. Try all the palettes and find which works best for you.</p>
+					<p class="indent3">Example:<br>I use <span class="red">RED</span>/<span class="green">GREEN</span> glasses. When playing on my laptop, I prefer the <span id="ptblock"></span> palette, but when playing on my flat screen TV, the <span id="rbblock"></span> palette works better for me.</p>
+					<button id="instr_back" type="button">Back</button>
+					<p>&nbsp;</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				Game.start();
+			});
+		</script>
+	</body>
+</html>
